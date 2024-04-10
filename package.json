@@ -10,10 +10,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "prisma": "^5.12.1",
     "typescript": "^5.4.4"
   },
   "dependencies": {
     "@apollo/server": "^4.10.2",
+    "@prisma/client": "^5.12.1",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "graphql": "^16.8.1"
