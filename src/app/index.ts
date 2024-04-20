@@ -1,25 +1,41 @@
 import { ApolloServer } from "@apollo/server";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const typeDefs = `
-  type Book {
-    title: String
-    author: String
-    publishedDate: String
+  type User {
+    id: ID!
+    username: String!
+    email: String!
   }
 
   type Query {
-    books: [Book]
+    users: [User!]!
+  }
+
+  type Mutation {
+    createUser(username: String!, email: String!): User!
   }
 `;
 
 const resolvers = {
   Query: {
-    books: () => {
-      // Logic to fetch books from a database or any other source
-      return [
-        { title: "Book 1", author: "Author 1", publishedDate: "2020-01-01" },
-        { title: "Book 2", author: "Author 2", publishedDate: "2021-03-15" },
-      ];
+    users: async () => {
+      return prisma.user.findMany();
+    },
+  },
+  Mutation: {
+    createUser: async (
+      _: any,
+      { username, email }: { username: string; email: string }
+    ) => {
+      return prisma.user.create({
+        data: {
+          username,
+          email,
+        },
+      });
     },
   },
 };
