@@ -1,42 +1,27 @@
 import { ApolloServer } from "@apollo/server";
 import { PrismaClient } from "@prisma/client";
+import { User } from "./user";
 
 const prisma = new PrismaClient();
 
 const typeDefs = `
-  type User {
-    id: ID!
-    username: String!
-    email: String!
-  }
+  ${User.types}
 
   type Query {
-    users: [User!]!
+    ${User.queries}
   }
 
   type Mutation {
-    createUser(username: String!, email: String!): User!
+    ${User.mutations}
   }
 `;
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return prisma.user.findMany();
-    },
+    ...User.resolvers.queries,
   },
   Mutation: {
-    createUser: async (
-      _: any,
-      { username, email }: { username: string; email: string }
-    ) => {
-      return prisma.user.create({
-        data: {
-          username,
-          email,
-        },
-      });
-    },
+    ...User.resolvers.mutations,
   },
 };
 
