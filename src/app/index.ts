@@ -1,11 +1,13 @@
 import { ApolloServer } from "@apollo/server";
 import { PrismaClient } from "@prisma/client";
 import { User } from "./user";
+import { Interaction } from "./interaction";
 
 const prisma = new PrismaClient();
 
 const typeDefs = `
   ${User.types}
+  ${Interaction.types}
 
   type Query {
     ${User.queries}
@@ -13,6 +15,7 @@ const typeDefs = `
 
   type Mutation {
     ${User.mutations}
+    ${Interaction.mutations}
   }
 `;
 
@@ -22,6 +25,7 @@ const resolvers = {
   },
   Mutation: {
     ...User.resolvers.mutations,
+    ...Interaction.resolvers.mutations,
   },
 };
 
