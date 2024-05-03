@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index",
-    "build": "tsc -p .",
-    "dev": "tsc-watch --onSuccess \"npm start\""
+    "start": "npx prisma generate && node dist/index",
+    "build": "tsc -p ."
   },
   "keywords": [],
   "author": "",
