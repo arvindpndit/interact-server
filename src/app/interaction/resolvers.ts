@@ -5,6 +5,7 @@ const mutations = {
     _: any,
     { content, authorId }: { content: string; authorId: number }
   ) => {
+    //@ts-ignore
     return prisma.interaction.create({
       data: {
         content,
