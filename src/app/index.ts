@@ -1,9 +1,6 @@
 import { ApolloServer } from "@apollo/server";
-import { PrismaClient } from "@prisma/client";
 import { User } from "./user";
 import { Interaction } from "./interaction";
-
-const prisma = new PrismaClient();
 
 const typeDefs = `
   ${User.types}
