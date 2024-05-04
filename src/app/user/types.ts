@@ -3,5 +3,8 @@ export const types = `#graphql
     id: ID!
     username: String!
     email: String!
+    clerkId : String!
+    name: String
+    picture: String
   }
 `;

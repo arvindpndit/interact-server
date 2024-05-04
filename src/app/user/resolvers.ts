@@ -9,12 +9,27 @@ const queries = {
 const mutations = {
   createUser: async (
     _: any,
-    { username, email }: { username: string; email: string }
+    {
+      username,
+      email,
+      clerkId,
+      name,
+      picture,
+    }: {
+      username: string;
+      email: string;
+      clerkId: string;
+      picture: string;
+      name: string;
+    }
   ) => {
     return prisma.user.create({
       data: {
         username,
         email,
+        clerkId,
+        picture,
+        name,
       },
     });
   },

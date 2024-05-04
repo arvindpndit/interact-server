@@ -17,8 +17,9 @@ model User {
   id         Int     @id @default(autoincrement())
   email      String  @unique
   username   String
-  firstName  String?
-  lastName   String?
+  name       String?
+  picture    String?
+  clerkId    String @default("null")
   createdAt  DateTime @default(now())
   interactions Interaction[]
 }

@@ -7,6 +7,7 @@ const mutations = {
   ) => {
     //@ts-ignore
     return prisma.interaction.create({
+      //FIXME LATER
       data: {
         content,
         authorId,
