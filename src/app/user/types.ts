@@ -5,6 +5,6 @@ export const types = `#graphql
     email: String!
     clerkId: String!
     name: String
-    icture: String
+    picture: String
   }
 `;

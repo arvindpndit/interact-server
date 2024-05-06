@@ -19,8 +19,8 @@ const mutations = {
       username: string;
       email: string;
       clerkId: string;
-      picture: string;
       name: string;
+      picture: string;
     }
   ) => {
     return prisma.user.create({
@@ -28,8 +28,8 @@ const mutations = {
         username,
         email,
         clerkId,
-        picture,
         name,
+        picture,
       },
     });
   },
