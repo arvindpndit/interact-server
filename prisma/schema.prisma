@@ -14,12 +14,12 @@ datasource db {
 }
 
 model User {
-  id         Int     @id @default(autoincrement())
-  email      String  @unique
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
   username   String
   name       String?
   picture    String?
-  clerkId    String @default("null")
+  clerkId    String   @unique
   createdAt  DateTime @default(now())
   interactions Interaction[]
 }
@@ -27,8 +27,8 @@ model User {
 model Interaction {
   id       Int @id @default(autoincrement())
   content  String
-  author   User   @relation(fields: [authorId], references: [id])
-  authorId Int
+  author   User   @relation(fields: [authorId], references: [clerkId])
+  authorId String
 }
 
 

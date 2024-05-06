@@ -1,3 +1,3 @@
 export const mutations = `#graphql
-  createInteraction(content: String, authorId: Int ): Interaction!
+  createInteraction(content: String, authorId: String ): Interaction!
 `;

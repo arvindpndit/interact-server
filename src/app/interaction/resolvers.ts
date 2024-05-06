@@ -3,11 +3,9 @@ import prisma from "../../db";
 const mutations = {
   createInteraction: async (
     _: any,
-    { content, authorId }: { content: string; authorId: number }
+    { content, authorId }: { content: string; authorId: string }
   ) => {
-    //@ts-ignore
     return prisma.interaction.create({
-      //FIXME LATER
       data: {
         content,
         authorId,
