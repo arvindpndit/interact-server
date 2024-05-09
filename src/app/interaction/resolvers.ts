@@ -1,4 +1,11 @@
+import { Interaction } from "@prisma/client";
 import prisma from "../../db";
+
+const queries = {
+  interactions: async () => {
+    return prisma.interaction.findMany();
+  },
+};
 
 const mutations = {
   createInteraction: async (
@@ -14,4 +21,16 @@ const mutations = {
   },
 };
 
-export const resolvers = { mutations };
+const getUserResolver = {
+  Interaction: {
+    author: (parent: Interaction) => {
+      return prisma.user.findUnique({
+        where: {
+          clerkId: parent.authorId,
+        },
+      });
+    },
+  },
+};
+
+export const resolvers = { queries, mutations, getUserResolver };

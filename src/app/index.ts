@@ -8,6 +8,7 @@ const typeDefs = `
 
   type Query {
     ${User.queries}
+    ${Interaction.queries}
   }
 
   type Mutation {
@@ -19,11 +20,13 @@ const typeDefs = `
 const resolvers = {
   Query: {
     ...User.resolvers.queries,
+    ...Interaction.resolvers.queries,
   },
   Mutation: {
     ...User.resolvers.mutations,
     ...Interaction.resolvers.mutations,
   },
+  ...Interaction.resolvers.getUserResolver,
 };
 
 const graphqlServer = new ApolloServer<any>({
