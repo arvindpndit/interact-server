@@ -6,5 +6,6 @@ export const types = `#graphql
     clerkId: String!
     name: String
     picture: String
+    interactions: [Interaction]
   }
 `;

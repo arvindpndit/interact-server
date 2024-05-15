@@ -27,6 +27,7 @@ const resolvers = {
     ...Interaction.resolvers.mutations,
   },
   ...Interaction.resolvers.getUserResolver,
+  ...User.resolvers.getInteractionsResolver,
 };
 
 const graphqlServer = new ApolloServer<any>({
