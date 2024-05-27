@@ -7,5 +7,13 @@ export const types = `#graphql
     name: String
     picture: String
     interactions: [Interaction]
-  }
+  },
+  
+  type FollowerFollowee {
+  id: Int!
+  followerId: String!
+  followeeId: String!
+  follower: User!
+  followee: User!
+}
 `;

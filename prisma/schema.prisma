@@ -14,22 +14,29 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
-  username   String
-  name       String?
-  picture    String?
-  clerkId    String   @unique
-  createdAt  DateTime @default(now())
+  id           Int               @id @default(autoincrement())
+  email        String            @unique
+  username     String
+  name         String?
+  picture      String?
+  clerkId      String            @unique
+  createdAt    DateTime          @default(now())
   interactions Interaction[]
+  followers    FollwerFollowee[] @relation("FollowerRelation")
+  followings   FollwerFollowee[] @relation("FolloweeRelation")
+}
+
+model FollwerFollowee {
+  id         Int    @id @default(autoincrement())
+  followerId String
+  followeeId String
+  followee   User   @relation("FolloweeRelation", fields: [followeeId], references: [clerkId])
+  follower   User   @relation("FollowerRelation", fields: [followerId], references: [clerkId])
 }
 
 model Interaction {
-  id       Int @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   content  String
   author   User   @relation(fields: [authorId], references: [clerkId])
   authorId String
 }
-
-
-

@@ -41,6 +41,23 @@ const mutations = {
       },
     });
   },
+  followUser: async (
+    _: any,
+    {
+      followerId,
+      followeeId,
+    }: {
+      followerId: string;
+      followeeId: string;
+    }
+  ) => {
+    return prisma.follwerFollowee.create({
+      data: {
+        followeeId,
+        followerId,
+      },
+    });
+  },
 };
 
 const getInteractionsResolver = {
