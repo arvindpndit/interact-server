@@ -69,6 +69,32 @@ const getInteractionsResolver = {
         },
       });
     },
+
+    following: async (parent: User) => {
+      const following = await prisma.follwerFollowee.findMany({
+        where: {
+          followerId: parent.clerkId, // Use parent.id to reference the User ID
+        },
+        include: {
+          followee: true,
+        },
+      });
+      console.log(following);
+      return following;
+    },
+
+    follower: async (parent: User) => {
+      const follower = await prisma.follwerFollowee.findMany({
+        where: {
+          followeeId: parent.clerkId, // Use parent.id to reference the User ID
+        },
+        include: {
+          follower: true,
+        },
+      });
+      console.log(follower);
+      return follower;
+    },
   },
 };
 

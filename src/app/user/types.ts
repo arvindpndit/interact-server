@@ -7,8 +7,10 @@ export const types = `#graphql
     name: String
     picture: String
     interactions: [Interaction]
+    following:[FollowerFollowee]
+    follower: [FollowerFollowee]
   },
-  
+
   type FollowerFollowee {
   id: Int!
   followerId: String!
